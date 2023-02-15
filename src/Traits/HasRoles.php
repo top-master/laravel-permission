@@ -195,6 +195,10 @@ trait HasRoles
             return $this->roles->contains('id', $roles->id);
         }
 
+        if ($roles instanceof Collection) {
+            $roles = $roles->all();
+        }
+
         if (is_array($roles)) {
             foreach ($roles as $role) {
                 if ($this->hasRole($role, $guard)) {
